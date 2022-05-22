@@ -3,28 +3,27 @@ import React from 'react';
 import { EntityList } from '../EntityList/EntityList';
 import { PropList } from '../PropList/PropList';
 import { Button } from '../Button/Button';
-import { Tree } from '../store/store';
+import { Observer, observer } from 'mobx-react-lite';
+import tree from '../store/store';
 
-const myTree = new Tree();
-myTree.getTree("https://api.github.com/gists/e1702c1ef26cddd006da989aa47d4f62");
-function App() {
+const App = observer(() => {
   return (
     <div className="App">
       <div className='ListWrap'>
-        <EntityList>
+        <EntityList store={tree}>
 
         </EntityList>
-        <PropList>
+        <PropList store={tree}>
 
         </PropList>
       </div>
       <div className='Buttons'>
         <Button>Apply</Button>
-        <Button>Delete</Button>
+        <Button onClick={() => <Observer>{tree.deleteNode(tree.selectedNode)}</Observer>}>Delete</Button>
         <Button>Refresh</Button>
       </div>
     </div>
   );
-}
+});
 
 export default App;
