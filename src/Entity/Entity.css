@@ -6,11 +6,7 @@
   background-color: rgba(139, 85, 190, 0.3);
 }
 
-.Entity:hover {
-  background-color: rgba(139, 85, 190, 0.7);
-}
-
-.Entity_chosen {
+.Entity:hover, .Entity_chosen {
   background-color: rgba(139, 85, 190, 0.7);
 }
 /*# sourceMappingURL=Entity.css.map */

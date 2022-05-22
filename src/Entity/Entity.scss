@@ -4,10 +4,7 @@
   min-height: 40px;
   border: 2px solid rgb(139, 85, 190);
     background-color: rgba(139, 85, 190, 0.3);
-  &:hover {
-    background-color: rgba(139, 85, 190, 0.7);
-  }
-  &_chosen {
+  &:hover, &_chosen {
     background-color: rgba(139, 85, 190, 0.7);
   }
 }
