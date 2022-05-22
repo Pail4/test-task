@@ -118,6 +118,10 @@ class Tree {
     const newTree = this.parseEntityes(entityes);
     this.setTree = newTree;
   }
+
+  async sendTree(tree = this.tree) {
+    console.log(tree);
+  }
 }
 
 export default new Tree("https://api.github.com/gists/e1702c1ef26cddd006da989aa47d4f62");
