@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-export class Tree {
+class Tree {
   tree = {
     label: null,
     id: null,
@@ -8,20 +8,46 @@ export class Tree {
     children: []
   };
 
-  constructor() {
-    makeAutoObservable(this);
+  selectedNode = this.tree;
+
+  constructor(url) {
+    makeAutoObservable(this, {}, {deep: true});
+    if (url) this.fetchTree(url);
+  }
+
+  set setTree(newTree) {
+    this.tree = newTree;
+  }
+
+  set choosenNode(node) {
+    this.selectedNode = node;
+  }
+
+  get getTree() {
+    return this.tree;
+  }
+
+  get getSelectedNode() {
+    return this.selectedNode;
   }
 
   addBranch(newBranch) {
     this.tree.children.push(newBranch);
   }
 
-  traversal(callback, tree = this.tree) {
-    callback(tree);
+  deleteNode(targetNode) {
+    this.traversal((node) => {
+      node.children = node.children.filter(child => child.id !== targetNode.parentId);
+    });
+  }
+
+  traversal(callback, nested = -1, tree = this.tree) {
+    callback(tree, nested);
     if (!tree.children.length) return;
 
+    nested++;
     for (let i = tree.children.length - 1; i >= 0; i--) {
-      this.traversal(callback, tree.children[i]);
+      this.traversal(callback, nested, tree.children[i]);
     }
   }
 
@@ -87,12 +113,13 @@ export class Tree {
     return newTree;
   }
 
-  async getTree(url) {
+  async fetchTree(url) {
     const response = await fetch(url);
     const object = await response.json();
     const entityes = JSON.parse(object.files["view.json"].content).entityLabelPages[0]; // some like it deep
     const newTree = this.parseEntityes(entityes);
-    console.dir(newTree);
-    this.tree = newTree;
+    this.setTree = newTree;
   }
 }
+
+export default new Tree("https://api.github.com/gists/e1702c1ef26cddd006da989aa47d4f62");

@@ -2,11 +2,31 @@ import './EntityList.css';
 
 import React from 'react';
 import { Entity } from '../Entity/Entity';
+import { observer } from 'mobx-react-lite';
 
-export const EntityList = () => {
+export const EntityList = observer(({ store }) => {
+  function createList() {
+    const list = [];
+    store.traversal((node, nested) => {
+      const { label, id, parentId } = node;
+      if (!id) return;
+      list.push(
+        <Entity
+          key={id}
+          label={label}
+          id={id}
+          parentId={parentId}
+          nested={nested}
+          onClick={() => store.choosenNode = node}
+        />
+      );
+    });
+    return list;
+  }
+  const list = createList();
   return (
     <div className='EntityList'>
-      <Entity></Entity>
+      {list}
     </div>
   );
-};
+});

@@ -1,21 +1,23 @@
 import './PropList.css';
 
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 
-export function PropList() {
+export const PropList = observer(({ store }) => {
+  const node = store.selectedNode || {};
   return (
     <div className='PropList'>
-      <Prop name="Label"></Prop>
-      <Prop name="Id"></Prop>
-      <Prop name="Parent Id"></Prop>
+      <Prop name="Label">{node.label}</Prop>
+      <Prop name="Id">{node.id}</Prop>
+      <Prop name="Parent Id">{node.parentId}</Prop>
     </div>
   );
-}
+});
 
 function Prop({ name, children }) {
   return (
     <div className='Prop'>
-      {name + ': ' + children}
+      {name + ': ' + (children || "-")}
     </div>
   );
 }
