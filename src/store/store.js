@@ -20,6 +20,10 @@ class Tree {
     this.URL = url;
   }
 
+  set setTree(newTree) {
+    this.tree = newTree;
+  }
+
   addBranch(newBranch) {
     this.tree.children.push(newBranch);
   }
@@ -112,7 +116,7 @@ class Tree {
     const object = await response.json();
     const entityes = JSON.parse(object.files["view.json"].content).entityLabelPages[0]; // some like it deep
     const newTree = this.parseEntityes(entityes);
-    this.tree = newTree;
+    this.setTree = newTree;
   }
 }
 
