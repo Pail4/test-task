@@ -20,7 +20,7 @@ const App = observer(() => {
       <div className='Buttons'>
         <Button>Apply</Button>
         <Button onClick={() => <Observer>{tree.deleteNode(tree.selectedNode)}</Observer>}>Delete</Button>
-        <Button>Refresh</Button>
+        <Button onClick={() => tree.fetchTree()}>Refresh</Button>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 
 class Tree {
   tree = {
@@ -11,24 +11,13 @@ class Tree {
   selectedNode = this.tree;
 
   constructor(url) {
-    makeAutoObservable(this, {}, {deep: true});
+    makeAutoObservable(this, {
+      fetchTree: action,
+      deleteNode: action,
+      chooseNode: action
+    }, { deep: true });
     if (url) this.fetchTree(url);
-  }
-
-  set setTree(newTree) {
-    this.tree = newTree;
-  }
-
-  set choosenNode(node) {
-    this.selectedNode = node;
-  }
-
-  get getTree() {
-    return this.tree;
-  }
-
-  get getSelectedNode() {
-    return this.selectedNode;
+    this.URL = url;
   }
 
   addBranch(newBranch) {
@@ -36,9 +25,14 @@ class Tree {
   }
 
   deleteNode(targetNode) {
+    this.chooseNode();
     this.traversal((node) => {
-      node.children = node.children.filter(child => child.id !== targetNode.parentId);
+      node.children = node.children.filter(child => child.id !== targetNode.id);
     });
+  }
+
+  chooseNode(node = this.tree) {
+    this.selectedNode = node;
   }
 
   traversal(callback, nested = -1, tree = this.tree) {
@@ -113,12 +107,12 @@ class Tree {
     return newTree;
   }
 
-  async fetchTree(url) {
+  async fetchTree(url = this.URL) {
     const response = await fetch(url);
     const object = await response.json();
     const entityes = JSON.parse(object.files["view.json"].content).entityLabelPages[0]; // some like it deep
     const newTree = this.parseEntityes(entityes);
-    this.setTree = newTree;
+    this.tree = newTree;
   }
 }
 

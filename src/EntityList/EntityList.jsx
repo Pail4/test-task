@@ -12,12 +12,13 @@ export const EntityList = observer(({ store }) => {
       if (!id) return;
       list.push(
         <Entity
+          store={store}
           key={id}
           label={label}
           id={id}
           parentId={parentId}
           nested={nested}
-          onClick={() => store.choosenNode = node}
+          onClick={() => store.chooseNode(node)}
         />
       );
     });
