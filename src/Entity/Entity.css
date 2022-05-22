@@ -3,9 +3,10 @@
   width: 90%;
   min-height: 40px;
   border: 2px solid #8b55be;
+  background-color: rgba(139, 85, 190, 0.3);
 }
 
 .Entity:hover {
-  background-color: rgba(139, 85, 190, 0.321);
+  background-color: rgba(139, 85, 190, 0.7);
 }
 /*# sourceMappingURL=Entity.css.map */
