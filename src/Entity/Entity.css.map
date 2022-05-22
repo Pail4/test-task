@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,OAAO,EAAE,KAAK;EACd,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,GAAG,CAAC,KAAK,CAAC,OAAiB;CAIpC;;AARD,AAKE,OALK,AAKJ,MAAM,CAAC;EACN,gBAAgB,EAAE,yBAAyB;CAC5C",
     "sources": [
         "Entity.scss"
     ],

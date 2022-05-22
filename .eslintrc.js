@@ -21,7 +21,7 @@ module.exports = {
   ],
   "rules": {
     semi: [2, 'always'],
-    'space-before-function-paren': ['error', {
+    'space-before-function-paren': [1, {
       anonymous: 'never',
       named: 'never',
       asyncArrow: 'never'

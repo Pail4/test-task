@@ -1,7 +1,7 @@
 # Задание 1
 
 - [+] Развернуть create-react-app
-- [ ] Сверстать макет [layout](layout.png)
+- [+] Сверстать макет [layout](layout.png)
 - [ ] Запросить данные из gist по ссылке: [https://api.github.com/gists/e1702c1ef26cddd006da989aa47d4f62]
   - [ ] Данные так же можно посмотреть здесь: [https://gist.github.com/avydashenko/e1702c1ef26cddd006da989aa47d4f62]
 - [ ] Полученные данные вывести в виде древовидного списка

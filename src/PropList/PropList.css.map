@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,QAAQ;EACjB,MAAM,EAAE,cAAc;CACvB",
     "sources": [
         "PropList.scss"
     ],

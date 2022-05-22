@@ -1,1 +1,11 @@
-/* No CSS *//*# sourceMappingURL=Entity.css.map */
+.Entity {
+  display: block;
+  width: 90%;
+  min-height: 40px;
+  border: 2px solid #8b55be;
+}
+
+.Entity:hover {
+  background-color: rgba(139, 85, 190, 0.321);
+}
+/*# sourceMappingURL=Entity.css.map */

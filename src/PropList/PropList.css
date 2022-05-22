@@ -1,1 +1,7 @@
-/* No CSS *//*# sourceMappingURL=PropList.css.map */
+.PropList {
+  min-width: 450px;
+  min-height: 500px;
+  padding: 10px 5px;
+  border: 2px solid #222;
+}
+/*# sourceMappingURL=PropList.css.map */
